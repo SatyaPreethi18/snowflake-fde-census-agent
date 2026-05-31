@@ -1,10 +1,10 @@
-from agent.sql_generator import (
+from .sql_generator import (
     find_best_field,
     get_table_name
 )
 
-from agent.metadata_service import get_field_details
-from agent.snowflake_client import run_query
+from .metadata_service import get_field_details
+from .snowflake_client import run_query
 
 
 def answer_question(question):
