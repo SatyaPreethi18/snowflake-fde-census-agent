@@ -1,4 +1,4 @@
-from .metadata_service import search_fields
+from agent.metadata_service import search_fields
 
 
 def find_best_field(question: str):

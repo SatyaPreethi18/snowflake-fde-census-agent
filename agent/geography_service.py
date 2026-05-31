@@ -1,4 +1,4 @@
-from .snowflake_client import run_query
+from agent.snowflake_client import run_query
 
 
 def get_county_fips(county_name):
