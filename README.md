@@ -1,32 +1,40 @@
 # US Census Agent
 
-A metadata-driven Census Question Answering Agent built using Snowflake, Python, and Streamlit.
+## Live Demo
 
-The application allows users to ask natural language questions about US Census data and automatically:
+https://app-fde-census-agent-7zlvukzzappjtjjtk9espnu.streamlit.app
 
-- Identify the most relevant Census metric
-- Determine the appropriate Census table
-- Generate SQL dynamically
-- Execute queries in Snowflake
-- Display results, visualizations, and summary statistics
+## Overview
+
+US Census Agent is a metadata-driven question answering application built using Snowflake, Python, and Streamlit.
+
+The application enables users to ask natural language questions about US Census data and automatically:
+
+* Identify the most relevant Census metric
+* Determine the appropriate Census table
+* Generate SQL dynamically
+* Execute queries in Snowflake
+* Display results, visualizations, and summary statistics
 
 ---
 
 ## Architecture
 
+```text
 User Question
-↓
+      ↓
 Metadata Search
-↓
+      ↓
 Metric Selection
-↓
+      ↓
 Table Resolution
-↓
+      ↓
 Dynamic SQL Generation
-↓
-Snowflake Execution
-↓
+      ↓
+Snowflake Query Execution
+      ↓
 Results + Visualization
+```
 
 ---
 
@@ -34,42 +42,40 @@ Results + Visualization
 
 ### Metadata-Driven Retrieval
 
-Instead of hardcoding Census fields, the application searches Census metadata to identify relevant metrics dynamically.
+Instead of relying on hardcoded Census fields, the application searches Census metadata to identify the most relevant metric dynamically.
 
 ### Dynamic SQL Generation
 
-SQL queries are generated automatically based on the selected Census field and source table.
+SQL queries are generated automatically based on the selected Census field and associated source table.
 
 ### Transparent Reasoning
 
-The application displays:
+To improve explainability, the application displays:
 
-- Selected metric
-- Source table
-- Generated SQL
-- Reasoning steps
-
-to help users understand how results were produced.
+* Selected metric
+* Source table
+* Generated SQL
+* Agent reasoning steps
 
 ### Data Exploration
 
 Users can:
 
-- View query results
-- Download results as CSV
-- Explore visualizations
-- Review summary statistics
+* View query results
+* Download results as CSV
+* Explore visualizations
+* Review summary statistics
 
 ---
 
 ## Example Questions
 
-- population
-- median household income
-- poverty
-- housing
-- education
-- age
+* population
+* median household income
+* poverty
+* housing
+* education
+* age
 
 ---
 
@@ -87,61 +93,60 @@ SnowflakeFDE/
     ├── sql_generator.py
     ├── question_answerer.py
     ├── snowflake_client.py
-    ├── geography_service.py
-    └── query_service.py
+    └── geography_service.py
 ```
 
 ---
 
 ## Design Decisions
 
-### Metadata First
+### Metadata-First Approach
 
-The solution searches Census metadata rather than relying on hardcoded SQL queries.
+The solution searches Census metadata rather than relying on predefined SQL queries. This allows the application to dynamically identify relevant Census metrics.
 
 ### Dynamic Query Generation
 
-The selected metric determines both the Census field and source table.
+The selected metric determines both the Census field and the source table used to generate SQL.
 
 ### Transparency
 
-Generated SQL and reasoning steps are displayed to improve explainability.
+Generated SQL and reasoning steps are displayed to help users understand how answers are produced.
 
-### Modularity
+### Modular Design
 
-Functionality is separated into dedicated services for:
+Functionality is separated into dedicated components for:
 
-- Metadata retrieval
-- SQL generation
-- Query execution
-- Geography lookup
-- Question answering
+* Metadata retrieval
+* SQL generation
+* Snowflake query execution
+* Geography lookup
+* Question answering
 
 ---
 
 ## Current Limitations
 
-- Supports common Census concepts such as population, income, poverty, housing, education, and age.
-- The current implementation selects the best matching metric rather than ranking multiple candidates.
-- Geographic filtering is not currently implemented.
-- Semantic search is keyword-based.
+* Supports common Census concepts such as population, income, poverty, housing, education, and age.
+* The current implementation selects the best matching metric rather than ranking multiple candidate metrics.
+* Geographic filtering is not currently implemented.
+* Semantic search is keyword-based.
 
 ---
 
 ## Future Improvements
 
-- Geographic filtering by state and county
-- Ranking multiple candidate metrics
-- Integration with Snowflake Cortex
-- Conversational follow-up questions
-- Improved semantic retrieval
+* Geographic filtering by state and county
+* Ranking multiple candidate metrics
+* Integration with Snowflake Cortex
+* Conversational follow-up questions
+* Improved semantic retrieval
 
 ---
 
 ## Technologies Used
 
-- Snowflake
-- Python
-- Streamlit
-- Pandas
-- US Census Open Data
+* Snowflake
+* Python
+* Streamlit
+* Pandas
+* US Census Open Data
